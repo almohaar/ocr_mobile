@@ -107,135 +107,20 @@ const loadModelToFileSystem = async () => {
   return modelPath;
 };
 
-// export const loadModel = async () => {
-//   if (model) return;
 
-//   await tf.ready();
-
-//   const modelPath = await loadModelToFileSystem();
-
-//   if (!modelPath) {
-//     throw new Error("Model path is undefined");
-//   }
-
-//   try {
-//     console.log("Model path:", `file://${modelPath}`); // Debugging
-//     model = await tf.loadGraphModel(`file://${modelPath}`);
-//     console.log("Model loaded successfully");
-//   } catch (error) {
-//     console.error("Failed to load model:", error);
-//   }
-// };
-
-// export const predict = async (imageTensor: tf.Tensor) => {
-//   if (!model) {
-//     await loadModel();
-//   }
-
-//   if (!model) {
-//     throw new Error("Model is not loaded");
-//   }
-
-//   const prediction = model.predict(imageTensor) as tf.Tensor;
-//   const predictedClass = prediction.argMax(-1).dataSync()[0];
-
-//   const classNames: string[] = [
-//     "a",
-//     "A",
-//     "b",
-//     "B",
-//     "d",
-//     "D",
-//     "e",
-//     "E",
-//     "f",
-//     "F",
-//     "g",
-//     "G",
-//     "gb",
-//     "GB",
-//     "h",
-//     "H",
-//     "i",
-//     "I",
-//     "j",
-//     "J",
-//     "k",
-//     "K",
-//     "l",
-//     "L",
-//     "m",
-//     "M",
-//     "n",
-//     "N",
-//     "o",
-//     "O",
-//     "p",
-//     "P",
-//     "r",
-//     "R",
-//     "s",
-//     "S",
-//     "t",
-//     "T",
-//     "u",
-//     "U",
-//     "w",
-//     "W",
-//     "y",
-//     "Y",
-//     "á",
-//     "Á",
-//     "à",
-//     "À",
-//     "é",
-//     "É",
-//     "è",
-//     "È",
-//     "ẹ",
-//     "Ẹ",
-//     "í",
-//     "Í",
-//     "ì",
-//     "Ì",
-//     "ó",
-//     "Ó",
-//     "ò",
-//     "Ò",
-//     "ọ",
-//     "Ọ",
-//     "ṣ",
-//     "Ṣ",
-//     "ú",
-//     "Ú",
-//     "ù",
-//     "Ù",
-//   ];
-
-//   return classNames[predictedClass];
-// };
-
-// export const loadModel = async () => {
-//   if (!model) {
-//     model = await loadTensorflowModel(
-//       require("../assets/model/yoruba_ocr_model.tflite")
-//     );
-//     console.log("Model loaded successfully!");
-//   }
-// };
 
 export const loadModel = async () => {
   try {
     await tf.ready();
-    console.log("TensorFlow.js is ready ✅");
+    console.log("TensorFlow.js is ready ");
 
     const modelPath = require("../assets/model/yoruba_ocr_model.tflite");
     
 
-    console.log("Model loaded successfully ✅");
+    console.log("Model loaded successfully ");
     return model;
   } catch (error) {
-    console.error("Failed to load model ❌:", error);
+    console.error("Failed to load model :", error);
   }
 };
 
@@ -271,7 +156,7 @@ export const testModel = async () => {
 
       console.log("Prediction output:", output);
     } catch (error) {
-      console.error("Prediction failed ❌:", error);
+      console.error("Prediction failed:", error);
     }
   }
 };
